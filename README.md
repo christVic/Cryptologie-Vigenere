@@ -1,10 +1,10 @@
 # Cryptologie-Vigenere-python
-Cryptographie ( chiffrement et dechiffrement ) et cryptanalyse du chiffrement de Cesar en Python.
+Cryptographie ( chiffrement et dechiffrement ) <!--et cryptanalyse -->du chiffrement de Vigenere en Python.
 
 Ce Programme permet de
 * chiffrer un message par la méthode de Vigenère
 * déchiffrer un message chiffré par la méthode de Vigenère
-* décrypter un message chiffré par la méthode de Vigenère
+<!--* décrypter un message chiffré par la méthode de Vigenère-->
 
 ## Lancement du programme
 python3 main.py
@@ -29,4 +29,4 @@ cle="cle"
 resultat=chiffrement(alphabet,texte,cle,chiffrer)
 print(resultat)
 ```
-## Cryptanalyse (cryptanalyse.py)
+<!--## Cryptanalyse (cryptanalyse.py)-->
