@@ -33,7 +33,7 @@ alphabet_defaut = "abcdefghijklmnopqrstuvwxyz"
 chiffrer = True
 chiffrer_texte(chiffrer)
 ```
-## Cryptanalyse par la méthode de Kasiski (cryptanalyseKasiski.py)-->
+## Cryptanalyse par la méthode de Kasiski (cryptanalyseKasiski.py)
 * Le texte à attaquer doit être assez long pour avoir un resultat correct
 * L'alphabet utilisé est a...z
 * Le texte à traiter peut contenir des lettres majuscules.
