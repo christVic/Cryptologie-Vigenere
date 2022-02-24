@@ -1,8 +1,8 @@
 import math
 import string
 import re
-from analyseFrequentielle import get_langues
-from analyseFrequentielle import analyse_frequentielle
+from cesar.analyseFrequentielle import get_langues
+from cesar.analyseFrequentielle import analyse_frequentielle
 from chiffrement import chiffrement
 
 
