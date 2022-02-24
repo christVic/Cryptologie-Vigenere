@@ -4,16 +4,15 @@ Cryptographie ( chiffrement et dechiffrement ) et cryptanalyse du chiffrement de
 Ce Programme permet de
 * chiffrer un message par la méthode de Vigenère
 * déchiffrer un message chiffré par la méthode de Vigenère
-* attaquer un message chiffré par la méthode de Vigenère
+* attaquer un message chiffré par la méthode de Vigenère (Kasiski <!--et attaque par analyse de frequences-->)
 
 
 ## Chiffrement et déchiffrement (chiffrement.py)
-* L'utilisateur peut definir son propre alphabet ou laisser l'alphabet par defaut (si c'est demandé).
-* Les caracteres de l'alphabet doivent être en minuscule et ne doivent pas etre des signes de ponctuation ni des espaces. ex:alphabet="abcdef0123"
+* L'alphabet utilisé est "abcdefghijklmnopqrstuvwxyz"
 * L'utilisateur doit definir un clé de chiffrement/dechiffrement(chaine de caractere) dont les caracteres doivent appartenir à l'alphabet.
 * Le texte à traiter peut contenir des lettres majuscules. ex:Il était une Fois
 * Les caracteres du texte qui ne sont pas dans l'alphabet ne sont pas modifiées lors du chiffrement/dechiffrement.
-* La ponctuation et les espaces sont supprimés du texte et de la clé ex: "il est la" devient "ilestla"
+* Les espaces et la ponctuation sont supprimés du texte et de la clé ex: "il est la!" devient "ilestla!"
 * Pour chiffrer(dechiffrer) un texte, le booleen "chiffrer" doit etre à True(False).
 
 ###### Exemple d'utilisation 1
@@ -27,19 +26,19 @@ resultat = chiffrement(alphabet,texte,chiffrer,cle)
 print(resultat)
 ```
 ###### Exemple d'utilisation 2
-Demander à l'utilisateur de saisir  l'alphabet, le texte à chiffrer/déchiffrer et la clé
+Demander à l'utilisateur de saisir le texte à chiffrer/déchiffrer et la clé
 ```
 from chiffrement import chiffrer_texte
 alphabet_defaut = "abcdefghijklmnopqrstuvwxyz"
 chiffrer = True
-chiffrer_texte(alphabet_defaut,chiffrer)
+chiffrer_texte(chiffrer)
 ```
 ## Cryptanalyse par la méthode de Kasiski (cryptanalyseKasiski.py)-->
 * Le texte à attaquer doit être assez long pour avoir un resultat correct
 * L'alphabet utilisé est a...z
-* Le texte à traiter peut contenir des lettres majuscules. ex:Il était une Fois
+* Le texte à traiter peut contenir des lettres majuscules.
 * Les caracteres du texte qui ne sont pas dans l'alphabet ne sont pas modifiées lors du chiffrement/dechiffrement.
-* La ponctuation et les espaces sont supprimés du texte ex: "il est la" devient "ilestla"
+* Les espaces et la ponctuation sont supprimés du texte ex: "il est la!" devient "ilestla"
 * Le fichier frequences.txt contient les fréquences d'apparition des lettres a...z en differentes langues
 * Les fréquences d'apparition des lettres sont tirées de [wikipedia](https://fr.wikipedia.org/wiki/Fr%C3%A9quence_d%27apparition_des_lettres_en_fran%C3%A7ais)
 ###### Exemple d'utilisation 1

@@ -101,6 +101,15 @@ def deduction_cle(alphabet,texte,langue):
     return cle
 
 def attaque_kasiski(texte,langue):
+    """
+    Effectue la cryptanalyse du texte à attaquer
+    Args:
+    - langue (string) : la langue du texte d'origine
+    - texte (string) : le texte à attaquer
+    Returns:
+    - cle (string) : la clé trouvée
+    - resultat (string) : le texte decrypté
+    """
     # on supprime la ponctuation et les espaces
     alphabet = string.ascii_lowercase
     texte = re.sub(r'[^\w\s]','',texte)
@@ -108,18 +117,13 @@ def attaque_kasiski(texte,langue):
 
     cle = deduction_cle(alphabet, texte, langue)
     if cle != "":
-        resultat = chiffrement(alphabet, texte ,False, cle)
+        resultat = chiffrement(alphabet,texte ,False, cle)
         return cle,resultat
     return "",""
 
-chaine0="kqowéfv, jpujuunukglmekjin?mwuxfqmkjbgwrlfn! fghudwuumbsvlpsncmuekqcteswreekoyssiwctua xyotapxplwpntcgojbgfqhtdwxizaygffnsxcseynctsspntujnytggwzgrwuunejuuqeapymekqhuiduxfpguytsmtffshnuoczgmruweytrgkmeedctvrecfbdjqcuswvbpnlgoylskmtefvjjtwwmfmwpnmemtmhrspxfsskffstnuoczgmdoeoyeekcpjrgpmurskhfrseiuevgoycwxizaygosaanydoeoyjlwunhamebfelxyvlwnojnsiofrwucceswkvidgmucgocruwgnmaaffvnsiudekqhceucpfcmpvsudgavemnymamvlfmaoyfntqcuafvfjnxklneiwcwodcculwriftwgmuswovmatnybuhtcocwfytnmgytqmkbbnlgfbtwojftwgntejkneedcldhwtvbuvgfbijg"
-
-chaine1="kqowefv jpujuunukglmekjinmwuxfqmkjbgwrlfnfghudwuumbsvlpsncmuekqcteswreekoyssiwctuaxyotapxplwpntcgojbgfqhtdwxizaygffnsxcseynctsspntujnytggwzgrwuunejuuqeapymekqhuiduxfpguytsmtffshnuoczgmruweytrgkmeedctvrecfbdjqcuswvbpnlgoylskmtefvjjtwwmfmwpnmemtmhrspxfsskffstnuoczgmdoeoyeekcpjrgpmurskhfrseiuevgoycwxizaygosaanydoeoyjlwunhamebfelxyvlwnojnsiofrwucceswkvidgmucgocruwgnmaaffvnsiudekqhceucpfcmpvsudgavemnymamvlfmaoyfntqcuafvfjnxklneiwcwodcculwriftwgmuswovmatnybuhtcocwfytnmgytqmkbbnlgfbtwojftwgntejkneedcldhwtvbuvgfbijg"
-chaine2="wmfwepnfkrtlrjrtaqykzuolbfarmxyvrypdwanxwigyqplrmxcurypqznhzlqfypzvgzlcurokrwhpbcvrgbybpydzciyoymzykeiyfbrcnhqwiqyclqgyapvbmxcurypdmfnjtarholxcioeiiyzwmahbxqcirckrmppzyyzzuouqnmenbdvbopldbhppbrhlfafijxmfmrmurldpacuowisionmzyzlvvkrpbrlopaglbpbnyotmahbomyykymzcfynvhfxmanmwcfkrptrooywzvopkrmlybyypnpnlpwmfustwamilbnwqtyhyapanfipunhadyhckzcfzlybeyzftrlzpabhqwmfwelzffbdiiclyayuqlkgcnfmqypltyyjlvqmnfqbhqdcejotaaipnprzplccifybqyipangbymefxzcvfppvfikeihdlfzqbrtuncpwmqyoyqrljzbrmqttqcqwmfjbciawbowvnbwtrxfdxnlxdbeyillrzxtbrypemyfbomscktbvpbywawozgrtjzqzifbcvplfacuowmrhzzvaufdanhzplrwxfaryqgwhmatadobcqrhkpagjbclhjlfzyucciawbwmfgbxmfgljmamnfqairdwanslqawrdxrospvgzxtzrpbyqeokuwhlildvwqzqeyzlzyucciawbymfnmlafyrwmrfipvrmqaifmbftryiwmaypexnmppcyybwtrurydnmqpmzjfcmqyocqrlbptyybwtrjbfbsufcmoflniiyzwmzjfcmolfeiahfbcrkrtbvyketngbcmgwlybvhrptnfrebryiwmcyrekbgjptnhdwmgyocmhnfwqfyodiamituvnbdtvgjpvfyfylhmqcqrxbdmguqdcacpnmgnbrcrlopvrmqaifffxqgyblcgyocqgifcmzuismhlbffqykzbeymlgfwbebrarpzeykpagjxdbeuknprymlzyuylbnciwmqycciawbnmgnbrcrlopmfnrymtobczrglylvuipbboqpayypqihnbdbbopwmflbeiexpewhnbdtrmpzcszolvpypymzjbnprhqaifkrttlualvffryqiyodbbopwmfgljmamkpkrmplqeypawhlbnznmbccadlfzaippvayjtasirozbsbdihdlfzqbrtxnlilnblzpurwxyqdobywhmmzcellyaiufykeyalvffxgmacoaieokpnblzpurwxyqdobdccyotmhlbwmqypeqaxrxwaxbpagfxxwvabymeuiomturwtruzecrfipurhqltbhacmfdfydvnbwmficqqpcbcarnipafiioigmcciawxtadofdmgllfdrhqpvgyocqgifcmolfeiahfbcrirbcvpfpvqlxtmanxdggllfdrlxgmpfbfzfuoxmfirdiamipcemxcurmgtvicqptrmfyorhfpcembetrmlfdecbcafjbnqnffdbrmapavhafaglfpaquoxmzykeyhcppbeirgmanbybrlotbbcopjecqlvacnfmbonfqicbyleufpvgupjbeirgmeuppurnqcmrholxcioeiiyzxwvkrzqdofwielfgmyucwizgbomyuopavmqlvpycciawxtarhbowvnmlafyqpqaxopmghbdmgyfyleumlaqyjlqawlxururuwhlascvdbaiefbcivuilznxfzlrflyleyp"
-
-
 def cryptanalyse_kasiski():
-    """Réalise une attaque de Kasiski sur un un texte chiffré (Vigenere) saisi par l'utilisateur
+    """
+    Réalise une attaque de Kasiski sur un un texte chiffré (Vigenere) saisi par l'utilisateur
     """
 
     print("Cryptanalyser un texte par la méthode de Kasiski\n**********************************")

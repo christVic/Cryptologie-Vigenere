@@ -4,7 +4,6 @@ from cryptanalyseKasiski import cryptanalyse_kasiski
 
 import string
 
-alphabet=string.ascii_lowercase#+"0123456789"
 print("************************************\nBienvenue dans le projet Vigenere\n************************************")
 while True:
     print("************************************************************************")
@@ -12,9 +11,9 @@ while True:
     action=int(input("Que voulez-vous faire?(Saisissez le numero correspondant à l'action)\n>"))
 
     if action==1:
-        chiffrer_texte(alphabet,True)
+        chiffrer_texte(True)
     elif action==2:
-        chiffrer_texte(alphabet,False)
+        chiffrer_texte(False)
     elif action==3:
         cryptanalyse_kasiski()
     else:

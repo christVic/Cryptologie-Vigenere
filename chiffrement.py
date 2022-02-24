@@ -2,7 +2,7 @@
 import string
 import re
 
-def chiffrement(alphabet, texte ,chiffrer, cle):
+def chiffrement(alphabet,texte ,chiffrer, cle):
     """
         Chiffre/Dechiffre un texte par la méthode de Vigenere
 
@@ -58,16 +58,15 @@ def chiffrement(alphabet, texte ,chiffrer, cle):
 
     return resultat
 
-def chiffrer_texte(alphabet,chiffrer):
+def chiffrer_texte(chiffrer):
     """
         Chiffre/Dechiffre un texte saisi par l'utilisateur par la méthode de Vigenere
 
         Args:
-            - alphabet (string ou liste de caractere): l'alphabet
             - chiffrer (booleen) : indique si l'on veut effectuer un chiffrement (True) ou un dechiffrement (False).
-        Returns:
-            - resultat (string) : le texte obtenu après le chiffrement/dechiffrement
     """
+    alphabet = string.ascii_lowercase
+
     if chiffrer:
         print("Chiffrer un texte\n*********************")
         texte_input = "\tSaisissez le texte à chiffrer\n\t>"
@@ -77,17 +76,13 @@ def chiffrer_texte(alphabet,chiffrer):
         texte_input = "\tSaisissez le texte à déchiffrer\n\t>"
         texte_resultat = "\tTexte déchiffré"
 
-    print("\tPour utiliser l'alphabet par defaut(",alphabet,"), laisser vide et appuyer sur Entrer ")
-    alphabet_input = input("\tQuel alphabet souhaitez-vous utiliser?(les lettres en miniscules!Pas de majuscule)\n\t>")
-    if alphabet_input:
-        alphabet = alphabet_input
 
     cle=input("\tQuelle clé(un caractere, un mot, une phrase, un texte,..) souhaitez-vous utiliser?\n\t>")
     while not cle:
         print("\tLa clé ne doit pas etre vide")
         cle=input("\tQuelle clé(un caractere, un mot, une phrase, un texte,..) souhaitez-vous utiliser?\n\t>")
 
-    print("\tLe texte est formé à partir des mots de l'alphabet choisi et peut contenir des lettres majuscules.")
+    print("\tLe texte est formé à partir des lettres de l'alphabet et peut contenir des lettres majuscules.")
     texte=input(texte_input)
     while not texte:
         print("\tLe texte ne doit pas etre vide")
