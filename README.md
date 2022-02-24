@@ -10,9 +10,9 @@ Ce Programme permet de
 ## Chiffrement et déchiffrement (chiffrement.py)
 * L'alphabet utilisé est "abcdefghijklmnopqrstuvwxyz"
 * L'utilisateur doit definir un clé de chiffrement/dechiffrement(chaine de caractere) dont les caracteres doivent appartenir à l'alphabet.
-* Le texte à traiter peut contenir des lettres majuscules. ex:Il était une Fois
+* Le texte à traiter peut contenir des lettres majuscules. ex:Il etait une Fois
 * Les caracteres du texte qui ne sont pas dans l'alphabet ne sont pas modifiées lors du chiffrement/dechiffrement.
-* Les espaces et la ponctuation sont supprimés du texte et de la clé ex: "il est la!" devient "ilestla!"
+* Les espaces et la ponctuation sont supprimés du texte et de la clé ex: "il est la!" devient "ilestla"
 * Pour chiffrer(dechiffrer) un texte, le booleen "chiffrer" doit etre à True(False).
 
 ###### Exemple d'utilisation 1
