@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import string
+import re
 
 def chiffrement(alphabet, texte ,chiffrer, cle):
     """
@@ -13,47 +14,46 @@ def chiffrement(alphabet, texte ,chiffrer, cle):
         Returns:
             - resultat (string) : le texte obtenu après le chiffrement/dechiffrement
     """
+    # on supprime toutes les ponctuations et les espaces
+    texte = re.sub(r'[^\w\s]','',texte)
+    texte = texte.replace(" ","")
+    cle = re.sub(r'[^\w\s]','',cle)
+    cle = cle.replace(" ","")
+
     taille_cle = len(cle)
-    if not cle:
-        cle = "cle"
+
     # le ième caractère du texte
     index_caractere_courant_texte = 0
 
     resultat = ""
 
-    chiffrer = 1
-    if not chiffrer:
-        chiffrer = -1
-
     for caractere_texte in texte:
-        # cas où le caractere du texte est dans l'alphabet
         if caractere_texte.lower() in alphabet:
-            # on trouve le caractere de la clé à utiliser pour chiffrer/dechiffre
+            # on trouve le caractere de la clé à utiliser
             caractere_cle = cle[index_caractere_courant_texte%taille_cle].lower()
 
             # cas où le caractere de la clé à utiliser est dans l'alphabet
             if caractere_cle in alphabet:
-                # on trouve l'index du caractere_cle dans l'alphabet
-                index_caractere_cle = chiffrer*alphabet.index(caractere_cle)+chiffrer
+                # on recupere l'index du caractere_cle et du caractere courant du texte  dans l'alphabet
+                index_caractere_cle = alphabet.index(caractere_cle)
+                index_caractere = alphabet.index(caractere_texte.lower())
 
-                # on calcule l'index du caractere obtenu apres chiffrement
-                index_nouveau_caractere = (alphabet.index(caractere_texte.lower())+index_caractere_cle)%len(alphabet)
+                # on calcule l'index du nouveau caractere obtenu apres chiffrement
+                if chiffrer == True:
+                    index_nouveau_caractere = (index_caractere+index_caractere_cle)%len(alphabet)
+                else:
+                    index_nouveau_caractere = (index_caractere-index_caractere_cle)%len(alphabet)
 
                 # cas où le caractere du texte est une lettre majuscule
                 if caractere_texte.isupper():
                     resultat+=alphabet[index_nouveau_caractere].upper()
-
-                # cas où le caractere du texte est une lettre minuscule
                 else:
                     resultat+=alphabet[index_nouveau_caractere]
-
-            # cas où le caractere de la clé à utiliser n'est pas dans l'alphabet
             else:
                 resultat += caractere_texte
-
-        # cas où le caractere du texte n'est pas dans l'alphabet
         else:
             resultat += caractere_texte
+
         index_caractere_courant_texte += 1
 
     return resultat
